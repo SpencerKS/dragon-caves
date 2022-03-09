@@ -9,22 +9,26 @@ public class Main {
         System.out.println("In front of you, you see two caves.");
         System.out.println("In one cave, the dragon is friendly and will share his treasure with you.");
         System.out.println("The other dragon is greedy, hungry and will eat you on sight.");
-        System.out.println("Which cave will you go into? /n (1 or 2)");
+        System.out.println("Which cave will you go into? \n (1 or 2)");
         choice();
     }
     public static void choice() {
         Scanner in = new Scanner(System.in);
-        int input = in.nextInt();
-        in.close();
+        //adding a try and catch block to make sure only valid input does anything
+        try {
+            int input = in.nextInt();
+            in.close();
 
-        if (input == 1) {
-            disaster();
-        }
-        else if (input == 2) {
-            reward();
-        }
-        else {
-            intro();
+            if (input == 1) {
+                disaster();
+            } else if (input == 2) {
+                reward();
+            } else {
+                intro();
+            }
+        } catch (Exception e) {
+            System.out.println("Caught Exception: Invalid Input");
+            throw e;
         }
     }
     public static void reward() {
